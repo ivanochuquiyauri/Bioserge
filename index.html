@@ -6,6 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BIOSERGE S.A.C | Gestión Ambiental</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              primary: '#006837',   // Verde oscuro institucional
+              secondary: '#8dc63f', // Verde lima brillante
+              accent: '#fcee21',    // Amarillo brillante
+              dark: '#004225',      // Sombra profunda de verde
+              light: '#f4f9f4'      // Fondo verde muy claro
+            }
+          }
+        }
+      }
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,6 +30,12 @@
     body {
       font-family: 'Inter', sans-serif;
       scroll-behavior: smooth;
+    }
+    .brand-gradient {
+      background: linear-gradient(135deg, #006837 0%, #8dc63f 100%);
+    }
+    .text-brand-shadow {
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
   </style>
 <script type="importmap">
@@ -26,7 +49,7 @@
 }
 </script>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-brand-light text-slate-900">
   <div id="root"></div>
 </body>
 </html>

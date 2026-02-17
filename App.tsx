@@ -32,14 +32,17 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
+    <nav className="fixed w-full bg-white/95 backdrop-blur-md z-50 border-b border-brand-primary/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           <div className="flex-shrink-0 flex items-center">
-            <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center mr-2">
-              <span className="text-yellow-400 text-xl font-bold">B</span>
+            <div className="w-11 h-11 bg-brand-primary rounded-full flex items-center justify-center mr-3 shadow-lg">
+              <span className="text-brand-accent text-2xl font-black italic">B</span>
             </div>
-            <span className="text-2xl font-bold text-green-800 tracking-tight">BIOSERGE S.A.C</span>
+            <div className="flex flex-col">
+              <span className="text-xl font-bold text-brand-primary leading-none tracking-tight">BIOSERGE</span>
+              <span className="text-[10px] font-bold text-brand-secondary tracking-[0.2em]">S.A.C.</span>
+            </div>
           </div>
           
           <div className="hidden md:block">
@@ -48,7 +51,7 @@ const Navbar: React.FC = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-slate-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-slate-600 hover:text-brand-primary px-3 py-2 rounded-md text-sm font-semibold transition-all duration-200 border-b-2 border-transparent hover:border-brand-secondary"
                 >
                   {item.name}
                 </a>
@@ -59,7 +62,7 @@ const Navbar: React.FC = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-green-600 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-brand-primary hover:bg-brand-light focus:outline-none"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -69,14 +72,14 @@ const Navbar: React.FC = () => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-slate-100 animate-in slide-in-from-top duration-300">
+        <div className="md:hidden bg-white border-t border-slate-100 shadow-2xl animate-in fade-in slide-in-from-top duration-300">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {menuItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="block text-slate-600 hover:text-green-600 hover:bg-slate-50 px-3 py-2 rounded-md text-base font-medium"
+                className="block text-slate-600 hover:text-brand-primary hover:bg-brand-light px-3 py-3 rounded-md text-base font-bold"
               >
                 {item.name}
               </a>
@@ -91,36 +94,42 @@ const Navbar: React.FC = () => {
 const Hero: React.FC = () => {
   return (
     <section id="inicio" className="relative pt-20 overflow-hidden bg-white">
-      <div className="absolute top-0 right-0 -z-10 w-1/2 h-full bg-gradient-to-l from-green-50 to-transparent hidden lg:block"></div>
+      <div className="absolute top-0 right-0 -z-10 w-2/3 h-full bg-gradient-to-l from-brand-secondary/10 to-transparent hidden lg:block rounded-bl-[100px]"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 text-center lg:text-left">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold mb-4">
-              <span className="flex h-2 w-2 rounded-full bg-green-600 animate-pulse"></span>
+            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-brand-primary text-brand-accent text-xs font-bold uppercase tracking-widest mb-4 shadow-md">
+              <span className="flex h-2 w-2 rounded-full bg-brand-secondary animate-pulse"></span>
               <span>Res. Dir. {CONTACT_DATA.resolution}</span>
             </div>
-            <h1 className="text-4xl sm:text-6xl font-extrabold text-slate-900 leading-tight">
-              Fomentando el <span className="text-green-600">Desarrollo Sostenible</span> Ambiental
+            <h1 className="text-4xl sm:text-6xl font-black text-slate-900 leading-[1.1] text-brand-shadow">
+              Fomentando el <br />
+              <span className="text-brand-primary">Desarrollo</span> <br />
+              <span className="text-brand-secondary">Sostenible</span>
             </h1>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto lg:mx-0">
-              Brindamos servicios integrales de recolección, transporte y disposición final de residuos industriales con flota propia certificada.
+            <p className="text-xl text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              Gestión integral de residuos y saneamiento ambiental con los más altos estándares de calidad y compromiso ecológico.
             </p>
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-              <a href="#contacto" className="px-8 py-4 bg-green-600 text-white font-bold rounded-lg shadow-lg hover:bg-green-700 transition-all transform hover:scale-105 flex items-center justify-center">
-                Solicitar Cotización <ChevronRight className="ml-2" size={20} />
+              <a href="#contacto" className="px-10 py-4 bg-brand-primary text-white font-bold rounded-full shadow-xl hover:bg-brand-dark transition-all transform hover:scale-105 flex items-center justify-center">
+                Cotizar Ahora <ChevronRight className="ml-2" size={20} />
               </a>
-              <a href="#servicios" className="px-8 py-4 bg-white text-green-600 border-2 border-green-600 font-bold rounded-lg hover:bg-green-50 transition-all flex items-center justify-center">
-                Ver Servicios
+              <a href="#servicios" className="px-10 py-4 bg-white text-brand-primary border-2 border-brand-primary font-bold rounded-full hover:bg-brand-light transition-all flex items-center justify-center">
+                Ver Portafolio
               </a>
             </div>
           </div>
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-yellow-400 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-            <img 
-              src="https://picsum.photos/seed/bioserge/800/600" 
-              alt="Bioserge Fleet" 
-              className="relative rounded-2xl shadow-2xl w-full object-cover aspect-video sm:aspect-auto"
-            />
+          <div className="relative">
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-accent rounded-full opacity-20 blur-3xl"></div>
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-brand-secondary rounded-full opacity-20 blur-3xl"></div>
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform lg:rotate-2">
+              <img 
+                src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=1200" 
+                alt="Bioserge Fleet" 
+                className="w-full h-auto object-cover aspect-[4/3]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/40 to-transparent"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -130,53 +139,58 @@ const Hero: React.FC = () => {
 
 const About: React.FC = () => {
   return (
-    <section id="nosotros" className="py-24 bg-slate-50">
+    <section id="nosotros" className="py-32 bg-brand-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-sm font-bold text-green-600 tracking-widest uppercase mb-2">Conócenos</h2>
-          <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900">¿Quiénes Somos?</h3>
-          <div className="w-20 h-1.5 bg-yellow-400 mx-auto mt-4 rounded-full"></div>
+        <div className="text-center mb-20">
+          <h2 className="text-sm font-black text-brand-secondary tracking-[0.3em] uppercase mb-4">La Empresa</h2>
+          <h3 className="text-4xl sm:text-5xl font-black text-brand-primary">¿Quiénes Somos?</h3>
+          <div className="flex justify-center mt-6">
+            <div className="w-16 h-1 bg-brand-primary"></div>
+            <div className="w-16 h-1 bg-brand-secondary"></div>
+            <div className="w-16 h-1 bg-brand-accent"></div>
+          </div>
         </div>
 
-        <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-xl mb-20 border border-slate-100">
-          <p className="text-lg text-slate-700 leading-relaxed text-center max-w-4xl mx-auto">
-            BIOSERGE SAC, somos una empresa que brinda servicios integrales comprometidos con el medio ambiente, mediante sus procesos de recolección transporte y disposición final de residuos sólidos y líquidos de la industria, minería, salud y colectivos. Contamos con una flota de vehículos propios que nos permite atender de manera inmediata la demanda de nuestros clientes a nivel nacional.
+        <div className="bg-white rounded-[40px] p-10 lg:p-20 shadow-2xl mb-24 border border-brand-secondary/10 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-brand-secondary/5 rounded-full -mr-16 -mt-16"></div>
+          <p className="text-xl text-slate-700 leading-relaxed text-center max-w-5xl mx-auto font-medium">
+            <span className="text-brand-primary font-bold">BIOSERGE SAC</span>, somos una organización comprometida con la preservación del ecosistema. Ofrecemos soluciones logísticas avanzadas en recolección, transporte y disposición de residuos, operando con flota propia certificada para una respuesta ágil a nivel nacional.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Mision */}
-          <div className="bg-white p-8 rounded-2xl shadow-md border-t-4 border-green-600">
-            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6 text-green-600">
-              <Target size={28} />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Misión */}
+          <div className="group bg-white p-10 rounded-3xl shadow-lg border-b-8 border-brand-primary hover:-translate-y-2 transition-transform">
+            <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center mb-8 text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-colors">
+              <Target size={32} />
             </div>
-            <h4 className="text-2xl font-bold text-slate-900 mb-4">Misión</h4>
-            <p className="text-slate-600 leading-relaxed">
+            <h4 className="text-2xl font-black text-brand-primary mb-6">Misión</h4>
+            <p className="text-slate-600 leading-relaxed font-medium">
               Especializarnos en la recolección, transporte y asesoría para disposición final, priorizando el reaprovechamiento y el cuidado del medio ambiente con un enfoque sostenible.
             </p>
           </div>
 
-          {/* Vision */}
-          <div className="bg-white p-8 rounded-2xl shadow-md border-t-4 border-yellow-400">
-            <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-6 text-yellow-600">
-              <Eye size={28} />
+          {/* Visión */}
+          <div className="group bg-white p-10 rounded-3xl shadow-lg border-b-8 border-brand-secondary hover:-translate-y-2 transition-transform">
+            <div className="w-16 h-16 bg-brand-secondary/10 rounded-2xl flex items-center justify-center mb-8 text-brand-secondary group-hover:bg-brand-secondary group-hover:text-white transition-colors">
+              <Eye size={32} />
             </div>
-            <h4 className="text-2xl font-bold text-slate-900 mb-4">Visión</h4>
-            <p className="text-slate-600 leading-relaxed">
-              Continuar siendo la empresa líder en la gestión integral de residuos peligrosos y no peligrosos a nivel nacional.
+            <h4 className="text-2xl font-black text-brand-primary mb-6">Visión</h4>
+            <p className="text-slate-600 leading-relaxed font-medium">
+              Consolidarnos como el referente nacional indiscutible en la gestión integral de residuos industriales, impulsando la economía circular.
             </p>
           </div>
 
           {/* Valores */}
-          <div className="bg-white p-8 rounded-2xl shadow-md border-t-4 border-green-600">
-            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6 text-green-600">
-              <Users size={28} />
+          <div className="group bg-white p-10 rounded-3xl shadow-lg border-b-8 border-brand-accent hover:-translate-y-2 transition-transform">
+            <div className="w-16 h-16 bg-brand-accent/20 rounded-2xl flex items-center justify-center mb-8 text-brand-primary group-hover:bg-brand-accent transition-colors">
+              <Users size={32} />
             </div>
-            <h4 className="text-2xl font-bold text-slate-900 mb-4">Valores</h4>
-            <ul className="space-y-2">
+            <h4 className="text-2xl font-black text-brand-primary mb-6">Valores</h4>
+            <ul className="space-y-4">
               {VALUES.map((val) => (
-                <li key={val} className="flex items-center text-slate-600">
-                  <CheckCircle2 size={16} className="text-green-500 mr-2" />
+                <li key={val} className="flex items-center text-slate-700 font-bold text-sm">
+                  <CheckCircle2 size={18} className="text-brand-secondary mr-3 flex-shrink-0" />
                   {val}
                 </li>
               ))}
@@ -191,38 +205,38 @@ const About: React.FC = () => {
 const Services: React.FC = () => {
   const getIcon = (iconName: string) => {
     switch (iconName) {
-      case 'truck': return <Truck size={32} />;
-      case 'shield-check': return <ShieldCheck size={32} />;
-      case 'droplets': return <Droplets size={32} />;
-      case 'recycle': return <Recycle size={32} />;
-      default: return <ShieldCheck size={32} />;
+      case 'truck': return <Truck size={36} />;
+      case 'shield-check': return <ShieldCheck size={36} />;
+      case 'droplets': return <Droplets size={36} />;
+      case 'recycle': return <Recycle size={36} />;
+      default: return <ShieldCheck size={36} />;
     }
   };
 
   return (
-    <section id="servicios" className="py-24 bg-white">
+    <section id="servicios" className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-sm font-bold text-green-600 tracking-widest uppercase mb-2">Especialistas</h2>
-          <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Nuestros Servicios</h3>
-          <div className="w-20 h-1.5 bg-yellow-400 mx-auto mt-4 rounded-full"></div>
+        <div className="text-center mb-20">
+          <h2 className="text-sm font-black text-brand-secondary tracking-[0.3em] uppercase mb-4">Soluciones Integrales</h2>
+          <h3 className="text-4xl sm:text-5xl font-black text-brand-primary">Servicios Especializados</h3>
+          <p className="mt-4 text-slate-500 max-w-2xl mx-auto">Equipamiento tecnológico y personal altamente capacitado.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {SERVICES.map((service, idx) => (
-            <div key={idx} className="group p-8 rounded-2xl bg-slate-50 hover:bg-green-600 hover:text-white transition-all duration-300 transform hover:-translate-y-2 cursor-pointer shadow-sm hover:shadow-xl">
-              <div className="mb-6 text-green-600 group-hover:text-white transition-colors">
+            <div key={idx} className="group p-10 rounded-[2.5rem] bg-brand-light border border-slate-100 hover:bg-brand-primary transition-all duration-500 transform hover:-translate-y-3 shadow-sm hover:shadow-2xl">
+              <div className="mb-8 text-brand-primary group-hover:text-brand-accent transition-colors">
                 {getIcon(service.icon)}
               </div>
-              <h4 className="text-xl font-bold mb-4">{service.title}</h4>
+              <h4 className="text-2xl font-black mb-5 group-hover:text-white transition-colors">{service.title}</h4>
               {service.description && (
-                <p className="text-sm opacity-90 leading-relaxed mb-4">{service.description}</p>
+                <p className="text-slate-600 font-medium leading-relaxed mb-6 group-hover:text-white/90 transition-colors">{service.description}</p>
               )}
               {service.items && (
-                <ul className="text-xs space-y-1 opacity-80">
+                <ul className="space-y-3">
                   {service.items.map((item, i) => (
-                    <li key={i} className="flex items-center">
-                      <div className="w-1 h-1 bg-current rounded-full mr-2"></div>
+                    <li key={i} className="flex items-center text-sm font-bold text-brand-primary group-hover:text-brand-secondary transition-colors">
+                      <div className="w-2 h-2 bg-brand-secondary rounded-full mr-3 group-hover:bg-brand-accent"></div>
                       {item}
                     </li>
                   ))}
@@ -233,32 +247,23 @@ const Services: React.FC = () => {
         </div>
 
         {/* Process Flow */}
-        <div className="mt-20 pt-20 border-t border-slate-100">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center items-center">
-            <div className="flex flex-col items-center">
-              <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center text-green-600 mb-4 font-bold text-2xl">01</div>
-              <h5 className="font-bold text-lg mb-2">Recolección</h5>
-              <p className="text-sm text-slate-500">Con EPPs certificados</p>
+        <div className="mt-32 p-12 bg-brand-primary rounded-[3rem] text-white shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-brand-secondary opacity-10 rounded-full -mr-32 -mt-32"></div>
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
+            <div className="text-center">
+              <div className="w-24 h-24 rounded-full bg-brand-secondary/20 border-2 border-brand-secondary flex items-center justify-center mx-auto mb-8 font-black text-4xl text-brand-accent">01</div>
+              <h5 className="text-2xl font-black mb-4">RECOLECCIÓN</h5>
+              <p className="text-brand-light/80 font-medium">Equipos de protección y logística optimizada.</p>
             </div>
-            <div className="hidden md:block">
-              <div className="h-0.5 bg-slate-200 w-full relative">
-                <ChevronRight className="absolute -right-2 -top-2.5 text-slate-300" size={24} />
-              </div>
+            <div className="text-center">
+              <div className="w-24 h-24 rounded-full bg-brand-secondary/20 border-2 border-brand-secondary flex items-center justify-center mx-auto mb-8 font-black text-4xl text-brand-accent">02</div>
+              <h5 className="text-2xl font-black mb-4">TRANSPORTE</h5>
+              <p className="text-brand-light/80 font-medium">Unidades con monitoreo GPS y seguros integrales.</p>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center text-green-600 mb-4 font-bold text-2xl">02</div>
-              <h5 className="font-bold text-lg mb-2">Transporte</h5>
-              <p className="text-sm text-slate-500">Unidades certificadas</p>
-            </div>
-            <div className="hidden md:block">
-              <div className="h-0.5 bg-slate-200 w-full relative">
-                <ChevronRight className="absolute -right-2 -top-2.5 text-slate-300" size={24} />
-              </div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center text-green-600 mb-4 font-bold text-2xl">03</div>
-              <h5 className="font-bold text-lg mb-2">Disposición Final</h5>
-              <p className="text-sm text-slate-500">Gestión responsable</p>
+            <div className="text-center">
+              <div className="w-24 h-24 rounded-full bg-brand-secondary/20 border-2 border-brand-secondary flex items-center justify-center mx-auto mb-8 font-black text-4xl text-brand-accent">03</div>
+              <h5 className="text-2xl font-black mb-4">DISPOSICIÓN</h5>
+              <p className="text-brand-light/80 font-medium">Certificación en rellenos autorizados.</p>
             </div>
           </div>
         </div>
@@ -269,28 +274,27 @@ const Services: React.FC = () => {
 
 const Clients: React.FC = () => {
   return (
-    <section id="clientes" className="py-24 bg-slate-50">
+    <section id="clientes" className="py-32 bg-brand-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-sm font-bold text-green-600 tracking-widest uppercase mb-2">Confianza</h2>
-          <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Nuestros Clientes</h3>
-          <div className="w-20 h-1.5 bg-yellow-400 mx-auto mt-4 rounded-full"></div>
+        <div className="text-center mb-20">
+          <h2 className="text-sm font-black text-brand-secondary tracking-[0.3em] uppercase mb-4">Nuestra Red</h2>
+          <h3 className="text-4xl sm:text-5xl font-black text-brand-primary">Clientes que Confían</h3>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
           {CLIENTS.map((client, idx) => (
-            <div key={idx} className="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 p-4 bg-white rounded-xl shadow-sm">
+            <div key={idx} className="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-lg border-2 border-transparent hover:border-brand-secondary transition-all grayscale hover:grayscale-0">
               <img 
                 src={client.logo} 
                 alt={client.name} 
-                className="max-h-12 w-auto object-contain"
-                title={client.name}
+                className="max-h-16 w-auto object-contain mb-4"
               />
+              <span className="text-[10px] font-black text-brand-primary uppercase tracking-widest">{client.name}</span>
             </div>
           ))}
-          <div className="flex flex-col items-center justify-center bg-green-600 rounded-xl p-4 text-white font-bold text-center">
-            <span className="text-xl">¡TÚ!</span>
-            <span className="text-[10px] uppercase tracking-tighter">Próximo Cliente</span>
+          <div className="flex flex-col items-center justify-center bg-brand-primary rounded-3xl p-8 text-white font-black text-center shadow-xl hover:bg-brand-dark transition-colors cursor-pointer group">
+            <span className="text-3xl text-brand-accent group-hover:scale-110 transition-transform mb-2">+</span>
+            <span className="text-xs uppercase tracking-tighter">Únete a nosotros</span>
           </div>
         </div>
       </div>
@@ -300,92 +304,92 @@ const Clients: React.FC = () => {
 
 const Contact: React.FC = () => {
   return (
-    <section id="contacto" className="py-24 bg-white">
+    <section id="contacto" className="py-32 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
           <div>
-            <h3 className="text-3xl font-extrabold text-slate-900 mb-6">Contáctanos</h3>
-            <p className="text-slate-600 mb-8 text-lg">
-              Estamos listos para atender tus requerimientos de gestión ambiental en todo el territorio nacional.
+            <h3 className="text-5xl font-black text-brand-primary mb-10">Conectemos</h3>
+            <p className="text-slate-600 mb-12 text-xl font-medium leading-relaxed">
+              Transformamos tus desafíos ambientales en oportunidades de sostenibilidad. Nuestro equipo comercial responderá en menos de 24 horas.
             </p>
             
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0 text-green-600">
-                  <Phone size={24} />
+            <div className="space-y-10">
+              <div className="flex items-start group">
+                <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center mr-6 flex-shrink-0 text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all">
+                  <Phone size={28} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900">Teléfonos</h4>
-                  <div className="space-y-1">
+                  <h4 className="text-lg font-black text-brand-primary mb-2">Central de Atención</h4>
+                  <div className="space-y-2">
                     {CONTACT_DATA.phones.map(p => (
-                      <a key={p} href={`tel:${p.replace(/-/g, '')}`} className="block text-slate-600 hover:text-green-600">{p}</a>
+                      <a key={p} href={`tel:${p.replace(/-/g, '')}`} className="block text-slate-700 font-bold hover:text-brand-secondary transition-colors text-lg">{p}</a>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-start">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0 text-green-600">
-                  <Mail size={24} />
+              <div className="flex items-start group">
+                <div className="w-16 h-16 bg-brand-secondary/10 rounded-2xl flex items-center justify-center mr-6 flex-shrink-0 text-brand-secondary group-hover:bg-brand-secondary group-hover:text-white transition-all">
+                  <Mail size={28} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900">Correos Electrónicos</h4>
-                  <div className="space-y-1">
+                  <h4 className="text-lg font-black text-brand-primary mb-2">Canal Digital</h4>
+                  <div className="space-y-2">
                     {CONTACT_DATA.emails.map(e => (
-                      <a key={e} href={`mailto:${e}`} className="block text-slate-600 hover:text-green-600">{e}</a>
+                      <a key={e} href={`mailto:${e}`} className="block text-slate-700 font-bold hover:text-brand-secondary transition-colors text-lg">{e}</a>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-start">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0 text-green-600">
-                  <Globe size={24} />
+              <div className="flex items-start group">
+                <div className="w-16 h-16 bg-brand-accent/20 rounded-2xl flex items-center justify-center mr-6 flex-shrink-0 text-brand-primary group-hover:bg-brand-accent transition-all">
+                  <Globe size={28} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900">Sitio Web</h4>
-                  <a href={CONTACT_DATA.website} target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-green-600">{CONTACT_DATA.website}</a>
+                  <h4 className="text-lg font-black text-brand-primary mb-2">Plataforma Web</h4>
+                  <a href={CONTACT_DATA.website} target="_blank" rel="noopener noreferrer" className="text-slate-700 font-bold hover:text-brand-secondary transition-colors text-lg">{CONTACT_DATA.website}</a>
                 </div>
               </div>
-            </div>
-
-            <div className="mt-12 p-6 bg-slate-50 rounded-2xl border border-slate-100">
-              <p className="text-sm font-semibold text-slate-400 uppercase mb-2">Certificación Oficial</p>
-              <p className="text-green-700 font-bold">{CONTACT_DATA.resolution}</p>
             </div>
           </div>
 
-          <div className="bg-slate-50 p-8 rounded-3xl shadow-lg border border-slate-100">
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="bg-brand-light p-10 lg:p-14 rounded-[3.5rem] shadow-2xl border border-brand-secondary/10 relative">
+            <div className="absolute -top-6 -right-6 w-20 h-20 bg-brand-accent rounded-full flex items-center justify-center text-brand-primary transform rotate-12 shadow-xl border-4 border-white">
+              <span className="font-black text-sm">24/7</span>
+            </div>
+            <form className="space-y-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">Nombre</label>
-                  <input type="text" className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all" placeholder="Juan Pérez" />
+                  <label className="block text-sm font-black text-brand-primary mb-3 uppercase tracking-widest">Nombre Completo</label>
+                  <input type="text" className="w-full px-6 py-4 rounded-2xl border-2 border-white focus:border-brand-secondary outline-none transition-all shadow-inner bg-white/50" placeholder="Ej. Juan Pérez" />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">Empresa</label>
-                  <input type="text" className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all" placeholder="Mi Empresa S.A." />
+                  <label className="block text-sm font-black text-brand-primary mb-3 uppercase tracking-widest">Empresa / RUC</label>
+                  <input type="text" className="w-full px-6 py-4 rounded-2xl border-2 border-white focus:border-brand-secondary outline-none transition-all shadow-inner bg-white/50" placeholder="Razón Social" />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Email</label>
-                <input type="email" className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all" placeholder="juan@empresa.com" />
+                <label className="block text-sm font-black text-brand-primary mb-3 uppercase tracking-widest">Correo Corporativo</label>
+                <input type="email" className="w-full px-6 py-4 rounded-2xl border-2 border-white focus:border-brand-secondary outline-none transition-all shadow-inner bg-white/50" placeholder="email@empresa.com" />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Servicio de Interés</label>
-                <select className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all appearance-none bg-white">
-                  <option>Recolección de Residuos</option>
-                  <option>Saneamiento Ambiental</option>
-                  <option>Succión de Líquidos</option>
-                  <option>Otros</option>
-                </select>
+                <label className="block text-sm font-black text-brand-primary mb-3 uppercase tracking-widest">Servicio Requerido</label>
+                <div className="relative">
+                  <select className="w-full px-6 py-4 rounded-2xl border-2 border-white focus:border-brand-secondary outline-none transition-all shadow-inner bg-white/50 appearance-none font-bold text-brand-primary">
+                    <option>Gestión de Residuos Sólidos</option>
+                    <option>Succión de Líquidos Industriales</option>
+                    <option>Saneamiento de Plantas</option>
+                    <option>Limpieza de Trampas de Grasa</option>
+                    <option>Otros</option>
+                  </select>
+                  <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-brand-primary">
+                    <ChevronRight className="rotate-90" size={20} />
+                  </div>
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Mensaje</label>
-                <textarea rows={4} className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all resize-none" placeholder="Cuéntanos sobre tu necesidad..."></textarea>
-              </div>
-              <button type="submit" className="w-full py-4 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition-colors shadow-lg shadow-green-200">
-                Enviar Mensaje
+              <button type="submit" className="w-full py-5 bg-brand-primary text-white font-black text-lg rounded-2xl hover:bg-brand-dark transition-all shadow-xl shadow-brand-primary/20 transform hover:-translate-y-1">
+                SOLICITAR ASESORÍA
               </button>
             </form>
           </div>
@@ -397,28 +401,46 @@ const Contact: React.FC = () => {
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-900 text-white py-12">
+    <footer className="bg-brand-primary text-white py-20 relative">
+      <div className="absolute top-0 left-0 w-full h-2 bg-brand-accent"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
-          <div>
-            <div className="flex items-center justify-center md:justify-start mb-4">
-              <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center mr-2">
-                <span className="text-yellow-400 font-bold">B</span>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-16 mb-20">
+          <div className="col-span-1 lg:col-span-2">
+            <div className="flex items-center mb-8">
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mr-4 shadow-xl">
+                <span className="text-brand-primary font-black italic text-2xl">B</span>
               </div>
-              <span className="text-xl font-bold">BIOSERGE S.A.C</span>
+              <span className="text-3xl font-black tracking-tight">BIOSERGE <span className="text-brand-accent">S.A.C.</span></span>
             </div>
-            <p className="text-slate-400 text-sm max-w-xs mx-auto md:mx-0">
-              Comprometidos con el desarrollo sostenible ambiental a nivel nacional.
+            <p className="text-brand-light/70 text-lg leading-relaxed max-w-md font-medium">
+              Especialistas en ingeniería ambiental y gestión de residuos. Transformando residuos en recursos para un futuro más verde.
             </p>
           </div>
-          <div className="flex justify-center space-x-6">
-            <a href="#" className="hover:text-green-500 transition-colors">Facebook</a>
-            <a href="#" className="hover:text-green-500 transition-colors">LinkedIn</a>
-            <a href="#" className="hover:text-green-500 transition-colors">Instagram</a>
+          <div>
+            <h5 className="text-xl font-black mb-8 border-b-2 border-brand-secondary pb-2 inline-block">Navegación</h5>
+            <ul className="space-y-4 font-bold text-brand-light/80">
+              <li><a href="#inicio" className="hover:text-brand-accent transition-colors">Inicio</a></li>
+              <li><a href="#nosotros" className="hover:text-brand-accent transition-colors">Nosotros</a></li>
+              <li><a href="#servicios" className="hover:text-brand-accent transition-colors">Servicios</a></li>
+              <li><a href="#contacto" className="hover:text-brand-accent transition-colors">Contacto</a></li>
+            </ul>
           </div>
-          <div className="text-slate-400 text-sm md:text-right">
-            <p>&copy; {new Date().getFullYear()} BIOSERGE S.A.C.</p>
-            <p>Todos los derechos reservados.</p>
+          <div>
+            <h5 className="text-xl font-black mb-8 border-b-2 border-brand-secondary pb-2 inline-block">Legal</h5>
+            <ul className="space-y-4 font-bold text-brand-light/80">
+              <li>Res. MINAM {CONTACT_DATA.resolution}</li>
+              <li>Política de Privacidad</li>
+              <li>Términos y Condiciones</li>
+              <li>Libro de Reclamaciones</li>
+            </ul>
+          </div>
+        </div>
+        <div className="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-brand-light/50 font-bold text-sm">
+          <p>&copy; {new Date().getFullYear()} BIOSERGE S.A.C. - Todos los derechos reservados.</p>
+          <div className="flex space-x-8 mt-6 md:mt-0">
+            <a href="#" className="hover:text-brand-accent transition-all transform hover:scale-110">LINKEDIN</a>
+            <a href="#" className="hover:text-brand-accent transition-all transform hover:scale-110">FACEBOOK</a>
+            <a href="#" className="hover:text-brand-accent transition-all transform hover:scale-110">INSTAGRAM</a>
           </div>
         </div>
       </div>
@@ -430,7 +452,7 @@ const Footer: React.FC = () => {
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen selection:bg-brand-secondary selection:text-white">
       <Navbar />
       <Hero />
       <About />
